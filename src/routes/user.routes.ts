@@ -9,7 +9,7 @@ const router = Router();
  * /users:
  *   get:
  *     summary: Retorna todos os usuários
- *     tags: [Users]
+ *     tags: [Usuários]
  *     responses:
  *       200:
  *         description: Lista de usuários
@@ -89,7 +89,7 @@ router.get('/', authMiddleware, getAllUsers);
  * /users/{id}:
  *   get:
  *     summary: Retorna um usuário pelo ID
- *     tags: [Users]
+ *     tags: [Usuários]
  *     parameters:
  *       - in: path
  *         name: id
@@ -176,7 +176,7 @@ router.get('/:id', authMiddleware, getUserById);
  * /users/{id}:
  *   put:
  *     summary: Atualiza um usuário
- *     tags: [Users]
+ *     tags: [Usuários]
  *     parameters:
  *       - in: path
  *         name: id
@@ -241,7 +241,7 @@ router.put('/:id', authMiddleware, updateUser);
  * /users/{id}:
  *   delete:
  *     summary: Deleta um usuário
- *     tags: [Users]
+ *     tags: [Usuários]
  *     parameters:
  *       - in: path
  *         name: id

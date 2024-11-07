@@ -9,7 +9,6 @@
     "migrate": "npx prisma migrate dev",
     "generate": "npx prisma generate",
     "build": "tsc",
-    "start": "node dist/index.js",
     "create:admin:user": "npx ts-node src/prisma/seeds/createAdminFromEnv.ts"
   },
   "keywords": [],

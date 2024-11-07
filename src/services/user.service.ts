@@ -1,8 +1,8 @@
 import * as userRepository from '../repositories/user.repository';
-import { User, UserStatus } from '../types/User';
+import { WriteUserDto, GetUserDto, UserStatus } from '../types/User';
 import bcrypt from 'bcryptjs';
 
-export async function createUser(data: User, actualUserId: string): Promise<User> {
+export async function createUser(data: WriteUserDto, actualUserId: string): Promise<GetUserDto> {
     const salt = bcrypt.genSaltSync(10);
     data.password = bcrypt.hashSync(data.password, salt);
 
@@ -15,7 +15,7 @@ export async function createUser(data: User, actualUserId: string): Promise<User
     return userRepository.createUser(data);
 }
 
-export async function verifyPassword(cpf: string, password: string): Promise<User> {
+export async function verifyPassword(cpf: string, password: string): Promise<GetUserDto> {
     const user = await userRepository.getUserByCPF(cpf);
     if (!user) {
         throw new Error('User not found');
@@ -29,15 +29,15 @@ export async function verifyPassword(cpf: string, password: string): Promise<Use
     return user;
 }
 
-export async function getUserById(id: string): Promise<User | null> {
+export async function getUserById(id: string): Promise<GetUserDto | null> {
     return userRepository.getUserById(id);
 }
 
-export async function getAllUsers(): Promise<User[]> {
+export async function getAllUsers(): Promise<GetUserDto[]> {
     return userRepository.getAllUsers();
 }
 
-export async function updateUser(id: string, data: Partial<User>, actualUserId: string): Promise<User> {
+export async function updateUser(id: string, data: Partial<WriteUserDto>, actualUserId: string): Promise<GetUserDto> {
     const actualUser = await userRepository.getUserById(actualUserId);
     if (!actualUser) {
         throw new Error('Actual user not provided');
@@ -50,14 +50,14 @@ export async function updateUser(id: string, data: Partial<User>, actualUserId: 
     });
 }
 
-export async function deleteUser(id: string, actualUserId: string): Promise<User> {
+export async function deleteUser(id: string, actualUserId: string): Promise<GetUserDto> {
     const actualUser = await userRepository.getUserById(actualUserId);
     if (!actualUser) {
         throw new Error('Actual user not provided');
     }
 
     return userRepository.updateUser(id, {
-        status: UserStatus.Removido,
+        status: UserStatus.Removido.toString(),
         removedAt: new Date().toISOString(),
         removedBy: actualUser.name
     });

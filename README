@@ -37,7 +37,7 @@ As seguintes ferramentas foram utilizadas nesse projeto:
 
 - [Express](https://expressjs.com/)
 - [Node.js](https://nodejs.org/en/)
-- [MySql](https://www.mysql.com/)
+- [MySQL](https://www.mysql.com/)
 - [Docker](https://docker.com)
 - [Prisma](https://www.prisma.io/)
 - [Jest](https://www.prisma.io/)
@@ -50,31 +50,55 @@ Antes de iniciar :checkered_flag:, você deve ter [Git](https://git-scm.com), [N
 ## :checkered_flag: Instruções para testar a API ##
 
 ```bash
-# Clone the project
-$ git clone https://github.com/davibsilva/load-csv-search-data.git
+# Clone o repositório
+$ git clone https://github.com/davibsilva/user-management.git
 
-# Change to repository directory
-$ cd load-csv-search-data
+# Entre na pasta contendo o repositório
+$ cd user-management
 
-# Install dependencies
+# Instale as dependências
 $ npm install
 
-# Create a .env file on project root
+# Crie um arquivo .env na raiz do projeto
 
-# Copy the .env.template content on project root and paste in created .env file(It must be necessary to test the API)
-Example:
+# Copie o conteúdo do arquivo .env.template na raiz do projeto e cole no arquivo .env file(Será necessário para testar a API)
+Exemplo(Poderá ser utilizado para testar localmente):
 PORT=3000
-MONGO_DB_HOSTNAME=db
+MYSQL_DATABASE=user-management
+MYSQL_ROOT_PASSWORD=root
+MYSQL_USER=user
+MYSQL_PASSWORD=password
+DATABASE_URL="mysql://root:root@localhost:3306/user-management"
+ADMIN_IDENTIFICATION=51354106946
+ADMIN_PASSWORD=25115496
+JWT_SECRET=secret
 
-# Run API
-$ npm run start-api
+# Na raiz do projeto, execute o comando para subir o container do MySQL
+docker-compose up -d
 
-# Wait some seconds and the server will be available in: <http://localhost:3000>
+# Execute as migrations
+npm run migrate
+
+# Gere os schemas do prisma
+npm run generate
+
+# Crie o primeiro usuário Admin para que seja possível testar a API
+npm run create:admin:user
+
+# Faça o build do projeto
+npm run build
+
+# Rode a API
+npm run dev
+
+# Espere alguns segundos e a API estará disponível em: <http://localhost:3000>
+
+# Para realizar os testes, confira a documentação localizada em <http://localhost:3000/api-docs>
 ```
 
 ## :memo: License ##
 
-This project is under lincense from MIT.
+Esse projeto está sobre licença MIT.
 
 
 Feito com :heart: por <a href="https://github.com/davibsilva" target="_blank">Davi V. Barbosa Silva</a>

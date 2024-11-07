@@ -1,9 +1,25 @@
-export type User = {
+export type GetUserDto = {
     id?: string
     cpf: string
     name: string
     birthdate: Date | string
-    status?: UserStatus
+    status?: string
+    createdAt?: Date | string
+    createdBy: string
+    updatedAt?: Date | string
+    updatedBy?: string | null
+    removedAt?: Date | string | null
+    removedBy?: string | null
+    password: string,
+    address?: Address | null
+}
+
+export type WriteUserDto = {
+    id?: string
+    cpf: string
+    name: string
+    birthdate: Date | string
+    status?: string
     createdAt?: Date | string
     createdBy: string
     updatedAt?: Date | string
@@ -15,13 +31,15 @@ export type User = {
 }
 
 export type Address = {
+    number: string 
+    id?: number 
     street: string
-    number: string
-    complement?: string | null
+    complement: string | null
     neighborhood: string
     city: string
     state: string
     zipCode: string
+    userId: string   
 }
 
 export enum UserStatus {

@@ -1,7 +1,7 @@
 import * as userService from '../services/user.service';
 import * as userRepository from '../repositories/user.repository';
 import bcrypt from 'bcryptjs';
-import { User, UserStatus } from '../types/User';
+import { WriteUserDto, GetUserDto, UserStatus } from '../types/User';
 
 jest.mock('../repositories/user.repository', () => ({
     getUserById: jest.fn(),
@@ -22,7 +22,7 @@ describe('User Service', () => {
         it('should successfully create a user', async () => {
             const actualUserId = '123';
             const actualUser = { id: actualUserId, name: 'Admin' };
-            const userData: User = { cpf: '123456789', name: 'John Doe', password: 'hashedPassword', createdBy: '', birthdate: '1999-06-28T00:00:00.000Z' };
+            const userData: WriteUserDto = { cpf: '123456789', name: 'John Doe', password: 'hashedPassword', createdBy: '', birthdate: '1999-06-28T00:00:00.000Z' };
 
             (userRepository.getUserById as jest.Mock).mockResolvedValue(actualUser);
             (userRepository.createUser as jest.Mock).mockResolvedValue({ ...userData, createdBy: actualUser.name });
@@ -45,7 +45,7 @@ describe('User Service', () => {
             (userRepository.getUserById as jest.Mock).mockResolvedValue(null);
 
             const actualUserId = '123';
-            const userData: User = { cpf: '123456789', name: 'John Doe', password: 'password123', createdBy: '', birthdate: '1999-06-28T00:00:00.000Z' };
+            const userData: WriteUserDto = { cpf: '123456789', name: 'John Doe', password: 'password123', createdBy: '', birthdate: '1999-06-28T00:00:00.000Z' };
 
             await expect(userService.createUser(userData, actualUserId)).rejects.toThrow('Actual user not provided');
         });
@@ -165,7 +165,7 @@ describe('User Service', () => {
             const actualUser = { id: actualUserId, name: 'Admin' };
 
             (userRepository.getUserById as jest.Mock).mockResolvedValue(actualUser);
-            (userRepository.updateUser as jest.Mock).mockResolvedValue({ status: UserStatus.Removido, removedBy: actualUser.name, removedAt: expect.any(String) });
+            (userRepository.updateUser as jest.Mock).mockResolvedValue({ status: UserStatus.Removido.toString(), removedBy: actualUser.name, removedAt: expect.any(String) });
 
             const result = await userService.deleteUser(userId, actualUserId);
 
@@ -175,7 +175,7 @@ describe('User Service', () => {
                 removedBy: actualUser.name,
                 removedAt: expect.any(String),
             });
-            expect(result.status).toBe(UserStatus.Removido);
+            expect(result.status).toBe(UserStatus.Removido.toString());
         });
 
         it('should throw an error if the actual user is not found', async () => {
