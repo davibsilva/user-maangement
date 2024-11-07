@@ -64,7 +64,7 @@ $ npm install
 
 # Copie o conteúdo do arquivo .env.template e cole no arquivo .env
 # (Será necessário para testar a API localmente)
-# (Será necessário para testar a API localmente)
+# !!!Utilizar ADMIN_IDENTIFICATION como cpf e ADMIN_PASSWORD como senha no primeiro login!!!
 Exemplo de .env:
 PORT=3000
 MYSQL_DATABASE=usermanagement
@@ -75,6 +75,9 @@ DATABASE_URL="mysql://user:password@localhost:3306/usermanagement"
 ADMIN_IDENTIFICATION=51354106946
 ADMIN_PASSWORD=25115496
 JWT_SECRET=secret
+
+# Dê permissão para o scriptde inicialização
+$ chmod +x init.sh         
 
 # Na raiz do projeto, execute o comando para subir o container do MySQL
 $ docker-compose up -d
