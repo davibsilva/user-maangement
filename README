@@ -7,11 +7,8 @@
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/davibsilva/glowing-airline-ticket?color=56BEB8">
-
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/davibsilva/glowing-airline-ticket?color=56BEB8">
-
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/davibsilva/glowing-airline-ticket?color=56BEB8">
-
   <img alt="License" src="https://img.shields.io/github/license/davibsilva/glowing-airline-ticket?color=56BEB8">
 </p>
 
@@ -28,8 +25,7 @@
 
 ## :dart: Sobre ##
 
-RESTFul API de gerenciamento de usuários
-
+RESTful API de gerenciamento de usuários.
 
 ## :rocket: Tecnologias ##
 
@@ -40,12 +36,17 @@ As seguintes ferramentas foram utilizadas nesse projeto:
 - [MySQL](https://www.mysql.com/)
 - [Docker](https://docker.com)
 - [Prisma](https://www.prisma.io/)
-- [Jest](https://www.prisma.io/)
-- [Swagger](https://www.jestjs.io/)
+- [Jest](https://www.jestjs.io/)
+- [Swagger](https://swagger.io/)
 
 ## :white_check_mark: Requisitos ##
 
-Antes de iniciar :checkered_flag:, você deve ter [Git](https://git-scm.com), [Node](https://nodejs.org/en/), [Docker](https://www.docker.com/get-started/) e [Docker Compose](https://docs.docker.com/compose/) instalados em sua máquina.
+Antes de iniciar :checkered_flag:, você deve ter os seguintes programas instalados em sua máquina:
+
+- [Git](https://git-scm.com)
+- [Node.js](https://nodejs.org/en/)
+- [Docker](https://www.docker.com/get-started/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
 ## :checkered_flag: Instruções para testar a API ##
 
@@ -61,8 +62,9 @@ $ npm install
 
 # Crie um arquivo .env na raiz do projeto
 
-# Copie o conteúdo do arquivo .env.template na raiz do projeto e cole no arquivo .env file(Será necessário para testar a API)
-Exemplo(Poderá ser utilizado para testar localmente):
+# Copie o conteúdo do arquivo .env.template e cole no arquivo .env
+# (Será necessário para testar a API localmente)
+Exemplo de .env:
 PORT=3000
 MYSQL_DATABASE=user-management
 MYSQL_ROOT_PASSWORD=root
@@ -74,34 +76,23 @@ ADMIN_PASSWORD=25115496
 JWT_SECRET=secret
 
 # Na raiz do projeto, execute o comando para subir o container do MySQL
-docker-compose up -d
+$ docker-compose up -d
 
 # Execute as migrations
-npm run migrate
+$ npm run migrate
 
-# Gere os schemas do prisma
-npm run generate
+# Gere os schemas do Prisma
+$ npm run generate
 
-# Crie o primeiro usuário Admin para que seja possível testar a API
-npm run create:admin:user
+# Crie o primeiro usuário Admin para testar a API
+$ npm run create:admin:user
 
 # Faça o build do projeto
-npm run build
+$ npm run build
 
 # Rode a API
-npm run dev
+$ npm run dev
 
 # Espere alguns segundos e a API estará disponível em: <http://localhost:3000>
 
-# Para realizar os testes, confira a documentação localizada em <http://localhost:3000/api-docs>
-```
-
-## :memo: License ##
-
-Esse projeto está sobre licença MIT.
-
-
-Feito com :heart: por <a href="https://github.com/davibsilva" target="_blank">Davi V. Barbosa Silva</a>
-&#xa0;
-
-<a href="#top">Voltar ao topo</a>
+# Para realizar os testes, confira a documentação em: <http://localhost:3000/api-docs>
