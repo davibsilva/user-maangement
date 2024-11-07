@@ -96,3 +96,13 @@ $ npm run dev
 # Espere alguns segundos e a API estará disponível em: <http://localhost:3000>
 
 # Para realizar os testes, confira a documentação em: <http://localhost:3000/api-docs>
+```
+
+## :memo: Licença ##
+
+Projeto sobre licença do MIT.
+
+Feito com :heart: por <a href="https://github.com/davibsilva" target="_blank">Davi V. Barbosa Silva</a>
+&#xa0;
+
+<a href="#top">Voltar ao topo</a>
