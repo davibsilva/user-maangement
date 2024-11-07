@@ -64,13 +64,14 @@ $ npm install
 
 # Copie o conteúdo do arquivo .env.template e cole no arquivo .env
 # (Será necessário para testar a API localmente)
+# (Será necessário para testar a API localmente)
 Exemplo de .env:
 PORT=3000
-MYSQL_DATABASE=user-management
-MYSQL_ROOT_PASSWORD=root
+MYSQL_DATABASE=usermanagement
+MYSQL_ROOT_PASSWORD=mysqlPW
 MYSQL_USER=user
 MYSQL_PASSWORD=password
-DATABASE_URL="mysql://root:root@localhost:3306/user-management"
+DATABASE_URL="mysql://user:password@localhost:3306/usermanagement"
 ADMIN_IDENTIFICATION=51354106946
 ADMIN_PASSWORD=25115496
 JWT_SECRET=secret

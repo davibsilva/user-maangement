@@ -18,9 +18,9 @@ const authRouter = express.Router();
  *           schema:
  *             type: object
  *             properties:
- *               email:
+ *               cpf:
  *                 type: string
- *                 description: E-mail do usuário
+ *                 description: CPF do usuário
  *               password:
  *                 type: string
  *                 description: Senha do usuário
@@ -59,28 +59,56 @@ authRouter.post('/login', login);
  *             properties:
  *               name:
  *                 type: string
- *                 description: Nome do usuário
- *               email:
+ *                 description: Nome completo do usuário
+ *               cpf:
  *                 type: string
- *                 description: E-mail do usuário
- *               password:
- *                 type: string
- *                 minLength: 8
- *                 description: Senha do usuário (mínimo 8 caracteres)
+ *                 description: CPF do usuário
  *               birthdate:
  *                 type: string
  *                 format: date
  *                 description: Data de nascimento do usuário
- *               cpf:
+ *               status:
  *                 type: string
- *                 description: CPF do usuário
+ *                 description: Status do usuário (ativo ou inativo)
+ *               password:
+ *                 type: string
+ *                 minLength: 8
+ *                 description: Senha do usuário (mínimo de 8 caracteres)
+ *               address:
+ *                 type: object
+ *                 properties:
+ *                   street:
+ *                     type: string
+ *                     description: Nome da rua do endereço
+ *                   number:
+ *                     type: string
+ *                     description: Número da residência
+ *                   complement:
+ *                     type: string
+ *                     nullable: true
+ *                     description: Complemento do endereço (se houver)
+ *                   neighborhood:
+ *                     type: string
+ *                     description: Bairro do endereço
+ *                   city:
+ *                     type: string
+ *                     description: Cidade do endereço
+ *                   state:
+ *                     type: string
+ *                     description: Estado do endereço
+ *                   zipCode:
+ *                     type: string
+ *                     description: CEP do endereço
+ *               createdBy:
+ *                 type: string
+ *                 description: Identificador do criador do usuário (geralmente admin)
  *     responses:
  *       201:
  *         description: Usuário registrado com sucesso
  *       400:
  *         description: Dados inválidos
  *       409:
- *         description: E-mail já registrado
+ *         description: CPF já registrado
  *       500:
  *         description: Erro interno do servidor
  */
