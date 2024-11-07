@@ -95,6 +95,7 @@ $ npm run dev
 
 # Espere alguns segundos e a API estará disponível em: <http://localhost:3000>
 
+!!!IMPORTANTE!!!
 # Para realizar os testes, confira a documentação em: <http://localhost:3000/api-docs>
 ```
 
