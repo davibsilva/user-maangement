@@ -64,7 +64,7 @@ $ npm install
 
 # Copie o conteúdo do arquivo .env.template e cole no arquivo .env
 # (Será necessário para testar a API localmente)
-# !!!Utilizar ADMIN_IDENTIFICATION como cpf e ADMIN_PASSWORD como senha no primeiro login!!!
+!!!Utilizar ADMIN_IDENTIFICATION como cpf e ADMIN_PASSWORD como senha no primeiro login!!!
 Exemplo de .env:
 PORT=3000
 MYSQL_DATABASE=usermanagement
